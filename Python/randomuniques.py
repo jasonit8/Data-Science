@@ -1,10 +1,6 @@
 import random
-lst = []
-for i in range(20):
-    cond = True
-    while cond:
-        r = random.randint(1,20)
-        if r not in lst:
-            lst += [r]
-            cond = False
+lst = [random.randint(1,20) for i in range(20)]
+for i in range(len(lst)):
+    while lst.count(lst[i]) > 1:
+        lst[i] = random.randint(1,20)
 print(lst)
