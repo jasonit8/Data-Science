@@ -1,17 +1,22 @@
+def nextprime(x):
+    a = 1
+    c = True
+    while c:
+        if x + a > 1 and all((x+a)%i != 0 for i in range(2,int((x+a)**.5+1))):
+            c = False
+        else:
+            a += 1
+    return x + a
+
 q = int(input('Number of queries: '))
 qs = []
 for i in range(q):
-    qs += [[i for i in range(1,1+int(input('n%i: ' %(i+1))))]]
-u = [0] * q
-for i in range(q):
-    for j in qs[i]:
-        f = set()
-        while j > 1:
-            for k in range(2,int(j)+1):
-                if j % k == 0:
-                    f.add(k)
-                    j /= k
-                    break
-        u[i] = len(f) if u[i] < len(f) else u[i]
-for i in u:
-    print(i)
+    qs += [int(input('n%i: ' %(i + 1)))]
+for i in qs:
+    p, f = 1, 1
+    c = 0
+    while p*nextprime(f) <= i:
+        f = nextprime(f)
+        p *= f
+        c += 1
+    print(c)
