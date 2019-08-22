@@ -10,9 +10,9 @@ def nextprime(x):
 
 q = int(input('Number of queries: '))
 qs = [int(input('n%i: ' %(i + 1))) for i in range(q)]
-for i in qs:
+for n in qs:
     p, f, c = 1, 1, 0
-    while p*nextprime(f) <= i:
+    while p*nextprime(f) <= n:
         f = nextprime(f)
         p *= f
         c += 1
